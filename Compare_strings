@@ -1,0 +1,19 @@
+def compare_strings(string1, string2):
+    # Convert both strings to lowercase
+    # and remove leading and trailing blanks
+    string1 = string1.lower().strip()
+    string2 = string2.lower().strip()
+
+    # Ignore punctuation
+    string1 = re.sub(r'[^\w\s]', r"", string1)   #\w (word character) matches any single letter, number or underscore (same as [a-zA-Z0-9_] ). The uppercase counterpart \W (non-word-character) matches any single character that doesn't match by \w (same as [^a-zA-Z0-9_] ). In regex, the uppercase metacharacter is always the inverse of the lowercase counterpart.
+    string2 = re.sub(r'[^\w\s]', r"", string2)   #\s stands for “whitespace character”. Again, which characters this actually includes, depends on the regex flavor.
+
+    # DEBUG CODE GOES HERE
+
+    return string1 == string2
+
+
+print(compare_strings("Have a Great Day!", "Have a great day?"))  # True
+print(compare_strings("It's raining again.", "its raining, again"))  # True
+print(compare_strings("Learn to count: 1, 2, 3.", "Learn to count: one, two, three."))  # False
+print(compare_strings("They found some body.", "They found somebody."))  # False
